@@ -1,3 +1,0 @@
-name="masterCourseProduct"
-[build]
-build_class = "builder::MyBuilder"
