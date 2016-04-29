@@ -3,27 +3,42 @@ use strict;
 use warnings;
 use utf8;
 use Amon2::Web::Dispatcher::RouterBoom;
+use masterCourseProduct::Repository::User;
+use DDP;
 
-any '/' => sub {
-    my ($c) = @_;
-    my $counter = $c->session->get('counter') || 0;
-    $counter++;
-    $c->session->set('counter' => $counter);
-    return $c->render('index.tx', {
-        counter => $counter,
+get '/' =>sub{
+    my ($c,$args) = @_;
+
+    return $c->render('login.tx',{
+        action          =>  '/', 
+        submit_button   =>  'register',
     });
 };
 
-post '/reset_counter' => sub {
-    my $c = shift;
-    $c->session->remove('counter');
-    return $c->redirect('/');
+post '/' => sub{
+    my($c,$args) = @_;
+    my $regist_user_id = $c->req->parameters->{id};
+    my $regist_user_name = $c->req->parameters->{name};
+    my $regist_user_password = $c->req->parameters->{password}; 
+    my @regist_user = ($regist_user_id,$regist_user_name,$regist_user_password);
+
+    
+    if($regist_user_id eq ''){p @regist_user;}
+    if($regist_user_name eq ''){print("not name");}
+    if($regist_user_password eq ''){print("not password");}
+    
+
+    masterCourseProduct::Repository::User->regist_user(\@regist_user) or return $c->res_404;
+
+    return $c->redirect('/mainpage');
 };
 
-post '/account/logout' => sub {
-    my ($c) = @_;
-    $c->session->expire();
-    return $c->redirect('/');
+get '/mainpage' =>sub{
+    my($c,$args) = @_;
+
+    return $c->render('mainpage.tx',{
+
+    });
 };
 
 1;

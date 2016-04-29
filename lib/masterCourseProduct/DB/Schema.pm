@@ -8,9 +8,9 @@ use Teng::Schema::Declare;
 base_row_class 'masterCourseProduct::DB::Row';
 
 table {
-    name 'member';
+    name 'user';
     pk 'id';
-    columns qw(id name);
+    columns qw(id user_id name password);
 };
 
 1;
