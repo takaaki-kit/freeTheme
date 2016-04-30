@@ -27,9 +27,10 @@ post '/' => sub{
     if($regist_user_name eq ''){print("not name");}
     if($regist_user_password eq ''){print("not password");}
     
-
-    masterCourseProduct::Repository::User->regist_user(\@regist_user) or return $c->res_404;
-
+    my $str="ababa";
+    my $isAlreadyRegist = masterCourseProduct::Repository::User->regist_user(\@regist_user);
+    p $isAlreadyRegist;
+    if($isAlreadyRegist==0){p $str;}
     return $c->redirect('/mainpage');
 };
 
