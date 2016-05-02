@@ -1,0 +1,13 @@
+<!-- tmpl/index.tx -->
+: cascade "include/layout.tx"
+
+: override login -> {
+
+<h1>login</h1>
+<form method="POST" action="<: $action :>">
+    <input type="text" name="id" id="login_register_id">
+    <input type="text" name="name" id="login_register_name">
+    <input type="password" name="password" id="login_register_password">
+    <input type="submit" id="login_register_submit" value="<: $submit_button :>">
+</form>
+: }
