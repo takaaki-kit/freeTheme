@@ -9,17 +9,21 @@ use DDP;
 get '/' =>sub{
     my ($c,$args) = @_;
 
-    return $c->render('login.tx',{
-        action          =>  '/', 
-        submit_button   =>  'register',
+    return $c->render('signin.tx',{
+        action_signin           =>  '/signin', 
+        action_login            =>  '/login', 
+        submit_button_signin    =>  'register',
+        submit_button_login     =>  'login',
     });
 };
 
-post '/' => sub{
+post '/signin' => sub{
+    my $hoge="signin";
+    p $hoge;
     my($c,$args) = @_;
-    my $regist_user_id = $c->req->parameters->{id};
-    my $regist_user_name = $c->req->parameters->{name};
-    my $regist_user_password = $c->req->parameters->{password}; 
+    my $regist_user_id = $c->req->parameters->{signin_id};
+    my $regist_user_name = $c->req->parameters->{signin_name};
+    my $regist_user_password = $c->req->parameters->{signin_password}; 
     my @regist_user = ($regist_user_id,$regist_user_name,$regist_user_password);
 
     
@@ -31,6 +35,20 @@ post '/' => sub{
     my $isAlreadyRegist = masterCourseProduct::Repository::User->regist_user(\@regist_user);
     p $isAlreadyRegist;
     if($isAlreadyRegist==0){p $str;}
+    return $c->redirect('/mainpage');
+};
+
+post '/login' => sub{
+    my $hoge="login";
+    p $hoge;
+
+    my($c,$args) = @_;
+    my $login_user_id = $c->req->parameters->{login_id};
+    my $login_user_password = $c->req->parameters->{login_password};
+    my @login_user = ($login_user_id,$login_user_password);
+
+    my $isExistedUser = masterCourseProduct::Repository::User->login_user(\@login_user);
+
     return $c->redirect('/mainpage');
 };
 

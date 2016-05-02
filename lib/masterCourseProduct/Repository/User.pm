@@ -32,4 +32,14 @@ sub regist_user{
     return 1;
 };
 
+sub login_user{
+    my ($class,$login_user) = @_;
+    my $id = $login_user->[0];
+    my $password = $login_user->[1];
+
+    my $result = $class->db->single('user',{user_id => $id,password =>$password},{});
+    p $result;
+
+};
+
 1;
