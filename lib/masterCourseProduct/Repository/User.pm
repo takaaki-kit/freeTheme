@@ -15,11 +15,8 @@ sub regist_user{
 
     my $result = $class->db->search('user',{},{order_by => 'id'});
     my @all = $result->all;
-    my $str="already regist";
-    p $id;
     foreach my $element(@all){
         if($element->{row_data}->{user_id} eq $id){
-            p $str;
             return 0;
         }
     }
@@ -38,8 +35,26 @@ sub login_user{
     my $password = $login_user->[1];
 
     my $result = $class->db->single('user',{user_id => $id,password =>$password},{});
-    p $result;
+    if(defined $result){return 0;}
+    return 1;
 
+};
+
+sub regist_request{
+    my ($class,$params) = @_;
+    my $inviter = $params->[0];
+    my $invitee = $params->[1];
+    my $purpose = $params->[2];
+    my $estimated_time = $params->[3];
+
+    $class->db->fast_insert(request =>{
+        inviter         => $inviter,
+        invitee         => $invitee,
+        purpose         => $purpose,
+        estimated_time  =>$estimated_time
+    });
+
+    return 1;
 };
 
 1;

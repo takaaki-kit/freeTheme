@@ -13,4 +13,9 @@ table {
     columns qw(id user_id name password);
 };
 
+table {
+    name 'request';
+    pk 'id';
+    columns qw(id user_id name password);
+};
 1;

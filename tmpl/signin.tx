@@ -3,18 +3,19 @@
 
 : override signin -> {
 
+<h1><: $error_code :></h1>
 <h1>signin</h1>
-<form method="POST" action="<: $action_signin :>">
+<form method="POST" action="/signin">
     <input type="text" name="signin_id" id="signin_register_id">
     <input type="text" name="signin_name" id="signin_register_name">
     <input type="password" name="signin_password" id="signin_register_password">
-    <input type="submit" id="signin_register_submit" value="<: $submit_button_signin :>">
+    <input type="submit" id="signin_register_submit" value="登録i">
 </form>
 
 <h1>login</h1>
-<form method="POST" action="<: $action_login :>">
+<form method="POST" action="/login">
     <input type="text" name="login_id" id="login_register_id">
     <input type="password" name="login_password" id="login_register_password">
-    <input type="submit" id="login_register_submit" value="<: $submit_button_login :>">
+    <input type="submit" id="login_register_submit" value="ログイン">
 </form>
 : }

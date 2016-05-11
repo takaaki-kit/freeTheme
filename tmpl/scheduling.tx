@@ -1,0 +1,33 @@
+<!-- tmpl/scheduling.tx -->
+: cascade "include/layout_scheduling.tx"
+
+: override scheduling_table -> {
+    <table border=1 onmousedown="mouseDown(this,event);" onmouseup="mouseUp(this,event);" onmousemove="mouseMove(this,event);">
+        <tr>
+            <label>8:00<td>1</td></label>
+            <label>8:30<td>&nbsp;</td></label>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td id="23">&nbsp;</td>
+            <td>24</td>
+        </tr>
+    </table>
+: }

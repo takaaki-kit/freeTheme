@@ -1,0 +1,53 @@
+<html lang="ja">
+    <head>
+        <script src="/static/js/table.js"></script>
+        <meta charset="UTF-8" />
+        <title>scheduling page</title>
+        <style type="text/css">
+            table{
+                width:1000px;
+                height:100px;
+            }
+        </style>
+    </head>
+    <body onLoad="init();">
+        <h1><a href="/">scheduling page!!</a></h1>
+        <hr>
+
+        <fieldset>
+            <form action="/scheduling" method="POST">
+                <p>
+                    <label>select invitee
+                        <select name="invitee"></select>
+                    </label>
+                </p>
+                
+                <p>
+                    <label>select purpose
+                        <input type="text" name="purpose">
+                    </label>
+                </p>
+                
+                <p>
+                    <label>select estimated time
+                        <select name=estimated_time>
+                            <option>30</option>
+                            <option>60</option>
+                        </select>
+                    </label>
+                </p>
+                <p>
+                    <input type="submit" value="confirm">
+                </p>
+
+            </form>
+        </fieldset>
+
+        <: block scheduling_table -> { } :>
+        
+        </body>
+</html>
+
+
+
+
