@@ -42,7 +42,12 @@
 
             </form>
         </fieldset>
-
+        
+        <p id=request_label_date>date</p>
+        <p>
+            <button type="button" id="request_date_prev" name="prev">前日</button>
+            <button type="button" id="request_date_next" name="next">翌日</button>
+        </p>
         <: block scheduling_table -> { } :>
         
         </body>

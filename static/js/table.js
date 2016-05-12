@@ -1,15 +1,17 @@
+var nowDate = new Date();
+var year = nowDate.getFullYear();
+var month = nowDate.getMonth()+1;
+var day = nowDate.getDate();
+
 function init(){
     var MIN_TIME = 7;
     var MAX_TIME = 19;
-
     var elements = document.querySelectorAll('tr > td');
-    var nowDate = new Date();
-    var year = nowDate.getFullYear();
-    var month = nowDate.getMonth()+1;
-    var day = nowDate.getDate();
     var hour=MIN_TIME;
     var minutes;
     var nowDateEpoch;
+
+    document.getElementById("request_label_date").innerHTML = year + ":" + month + ":" + day;
 
     for(var i in elements){
         if(i%2==0){
@@ -26,9 +28,18 @@ function init(){
         var newID = nowDateEpoch + "_" + hour + "_" + minutes;
         elements[i].id=newID;
     }
+
+    registEvent();
     return 0;
 }
 
+function registEvent(){
+    var tar_next = document.getElementById("request_date_next");
+    var tar_prev = document.getElementById("request_date_prev");
+    
+    tar_next.addEventListener("click",date_next,false);
+    tar_prev.addEventListener("click",date_prev,false);
+}
 
 var startCell=null;
 
@@ -106,3 +117,33 @@ function getCellPos(table, cell){
     }
     return null;
 }
+function date_prev(){
+    day--;
+    if(day<1){
+        day=31;
+        month--;
+    }
+    if(month<1){
+        month=12;
+        year--;
+    }
+    init();
+    return 0;
+}
+
+
+
+function date_next(){
+    day++;
+    if(day>31){
+        day=1;
+        month++;
+    }
+    if(month>12){
+        month=1;
+        year++;
+    }
+    init();
+    return 0;
+}
+
