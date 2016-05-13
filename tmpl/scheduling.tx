@@ -31,3 +31,35 @@
         </tr>
     </table>
 : }
+
+: override request_form ->{
+        <fieldset>
+            <form action="/scheduling" method="POST">
+                <p>
+                    <label>select invitee
+                        <select name="invitee"></select>
+                    </label>
+                </p>
+                
+                <p>
+                    <label>select purpose
+                        <input type="text" name="purpose">
+                    </label>
+                </p>
+                
+                <p>
+                    <label>select estimated time
+                        <select name=estimated_time>
+                            <option>30</option>
+                            <option>60</option>
+                        </select>
+                    </label>
+                </p>
+                <p>
+                    <input type="submit" value="confirm">
+                </p>
+
+            </form>
+        </fieldset>
+        
+:}

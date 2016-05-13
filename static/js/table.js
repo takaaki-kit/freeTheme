@@ -13,7 +13,8 @@ function init(){
 
     document.getElementById("request_label_date").innerHTML = year + ":" + month + ":" + day;
 
-    for(var i in elements){
+    for(var i =0; i < elements.length ; i++){
+
         if(i%2==0){
             hour +=1;
         }
@@ -27,6 +28,7 @@ function init(){
         nowDateEpoch = nowDateEpoch.getTime() / 1000;
         var newID = nowDateEpoch + "_" + hour + "_" + minutes;
         elements[i].id=newID;
+        elements[i].style.backgroundColor = "#eeeeee";
     }
 
     registEvent();
@@ -74,7 +76,7 @@ function mouseMove(table,e){
             if((from.row-y)*(y-to.row)>=0 && (from.col-x)*(x-to.col)>=0)
                 row.cells.item(x).style.backgroundColor = "#ffdddd";// 選択状態の色
             else
-                row.cells.item(x).style.backgroundColor = "transparent";// 未選択状態の色
+                row.cells.item(x).style.backgroundColor = "#eeeeee";// 未選択状態の色
         }
     }
 }
@@ -118,6 +120,13 @@ function getCellPos(table, cell){
     return null;
 }
 function date_prev(){
+    //選択されたセルをDBへ格納
+    var elements = document.querySelectorAll('tr > td');
+    for(var i =0; i < elements.length ; i++){
+       console.log(elements[i].style.backgroundColor); 
+    }
+
+    //日付を変更
     day--;
     if(day<1){
         day=31;
@@ -134,6 +143,13 @@ function date_prev(){
 
 
 function date_next(){
+    //選択されたセルをDBへ格納
+    var elements = document.querySelectorAll('tr > td');
+    for(var i =0; i < elements.length ; i++){
+       console.log(elements[i].style.backgroundColor); 
+    }
+
+    //日付を変更
     day++;
     if(day>31){
         day=1;
