@@ -10,7 +10,7 @@
             }
         </style>
     </head>
-    <body onLoad="init();">
+    <body onLoad="addElementID();registEvent();">
         <h1><a href="/">scheduling page!!</a></h1>
         <hr>
         
@@ -18,8 +18,12 @@
         
         <p id=request_label_date>date</p>
         <p>
-            <button type="button" id="request_date_prev" name="prev">前日</button>
-            <button type="button" id="request_date_next" name="next">翌日</button>
+
+            <form action="/change_date" method="POST" target="iframe">
+                <input type="submit" id="request_date_prev" name="prev" value="zenjitu">前日
+                <input type="submit" id="request_date_next" name="next" value="yokujitu">翌日
+            </form>
+            <iframe name="iframe"></iframe> 
         </p>
         <: block scheduling_table -> { } :>
         

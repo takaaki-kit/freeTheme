@@ -43,7 +43,7 @@
                 
                 <p>
                     <label>select purpose
-                        <input type="text" name="purpose">
+                        <input type="text" name="purpose" value="<?=$purpose ?>" >
                     </label>
                 </p>
                 

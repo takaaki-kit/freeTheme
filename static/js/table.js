@@ -3,7 +3,7 @@ var year = nowDate.getFullYear();
 var month = nowDate.getMonth()+1;
 var day = nowDate.getDate();
 
-function init(){
+function addElementID(){
     var MIN_TIME = 7;
     var MAX_TIME = 19;
     var elements = document.querySelectorAll('tr > td');
@@ -31,7 +31,6 @@ function init(){
         elements[i].style.backgroundColor = "#eeeeee";
     }
 
-    registEvent();
     return 0;
 }
 
@@ -136,7 +135,7 @@ function date_prev(){
         month=12;
         year--;
     }
-    init();
+    addElementID();
     return 0;
 }
 
@@ -159,7 +158,7 @@ function date_next(){
         month=1;
         year++;
     }
-    init();
+    addElementID();
     return 0;
 }
 

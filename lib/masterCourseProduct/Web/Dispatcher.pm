@@ -76,17 +76,17 @@ get '/mainpage' =>sub{
     my $q = new CGI;
 
 
-    my $str1="ok";
-    my $str2="no";
-    my $sid = $q->cookie("CGISESSID") || undef;
-    if($sid)
-    {
-        p $str1;
-        print "session ID is $sid";
-    }else{
-        p $str2;
-        print "no session ID";
-    }
+#    my $str1="ok";
+#    my $str2="no";
+#    my $sid = $q->cookie("CGISESSID") || undef;
+#    if($sid)
+#    {
+#        p $str1;
+#        print "session ID is $sid";
+#    }else{
+#        p $str2;
+#        print "no session ID";
+#    }
 
     return $c->render('mainpage.tx',{
 
@@ -111,8 +111,18 @@ post '/scheduling' => sub{
     
     my @req_params = ($inviter,$invitee,$purpose,$estimated_time);
     masterCourseProduct::Repository::User->regist_request(\@req_params);
-    
+        
     return $c->redirect('/mainpage');
+};
+
+
+post '/change_date' => sub{
+    my($c,$args) = @_;
+    p $c->req->parameters->{next};
+    p $c->req->parameters->{prev};
+    return $c->render('scheduling.tx',{
+        action  =>  '/scheduling'      
+    });
 };
 
 #sub cookie_path_fix {
